@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../backend/public/stylesheets/style.css" type="text/css">
+    <!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>-->
+    <script src="../../js/jquery-1.11.3.js"></script>
+
+</head>
+<body>
+
+<div class="box2"></div>
+
+<script>
+
+    var id=window.location.href.split('?')[1].split('=')[1];
+    $(function(){
+        if(id=="iNea"){
+            $.ajax({
+                url:"http://localhost:3000/item1/list",
+                type:"GET",
+                success:function(e){
+                    for(var i in e){
+                        $('.box2').append("<a href='index2.html?id="+e[i].id+"'>"+e[i].name+"</a><br>")
+                    }
+                }
+            })
+        } else {
+            $.ajax({
+                url:"http://localhost:3000/item1/c1",
+                type:"POST",
+                data:{abc:id},
+                success:function(e){
+                    for(var i in e){
+                        $('.box2').append('<p>'+e[i].connet+'</p>')
+                    }
+                }
+            })
+        }
+
+    })
+
+
+
+
+
+</script>
+
+</body>
+</html>

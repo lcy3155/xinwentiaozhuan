@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../backend/public/stylesheets/style.css" type="text/css">
+    <!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>-->
+    <script src="../../js/jquery-1.11.3.js"></script>
+
+</head>
+<body>
+<div class="nav">
+    <a href="#">首页</a>
+    <a href="index2.html?id=iNea">新闻（跳转）</a>
+    <a href="#">项目介绍</a>
+    <a href="#">帮助</a>
+    <a href="#">关于我们</a>
+</div>
+<div class="box"></div>
+
+<script>
+    $(function(){
+        $.ajax({
+            url:"http://localhost:3000/item1/list",
+            type:"GET",
+            success:function(e){
+//                console.log(e)
+                for(var i in e){
+                    $(".box").append("<a href='index2.html?id="+e[i].id+"'>"+e[i].name+"</a><br>")
+                }
+
+            }
+        })
+    })
+
+</script>
+
+</body>
+</html>
